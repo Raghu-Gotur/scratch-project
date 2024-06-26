@@ -59,7 +59,6 @@ export default function App() {
       } else if (actionId === 'hide') {
         updatedVisibility = false;
       }
-
       return {
         ...prevPosition,
         x: updateX,
