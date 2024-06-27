@@ -14,7 +14,11 @@ export default function MidArea({
     const firstPart = messageParts[element?.iconIndex - 1] + ' ';
     const lastPart = messageParts.slice(element?.iconIndex).join(' ');
     return (
-      <div className={element.parentClassname + ' justify-between'}>
+      <div
+        className={
+          element.parentClassname + ' justify-between rounded-sm p-2 m-4'
+        }
+      >
         <div
           onClick={() => handleClick(element.id)}
           style={{
@@ -42,7 +46,7 @@ export default function MidArea({
     );
   };
 
-  const executeSequentially = async (actions) => {
+  const sequentialExecute = async (actions) => {
     for (const action of actions) {
       handleClick(action?.id);
       await new Promise((resolve) => setTimeout(resolve, 100));
@@ -57,16 +61,16 @@ export default function MidArea({
     >
       <div className='flex justify-around'>
         <div
-          className='inline-flex items-center justify-center p-2 m-2 w-16 h-16 bg-green-100 rounded-full cursor-pointer'
+          className='inline-flex items-center justify-center p-2 m-2 w-16 h-16 rounded-full cursor-pointer hover:bg-green-200'
           onClick={() => {
-            executeSequentially(actions);
+            sequentialExecute(actions);
           }}
         >
           <Icon name='flag' className='text-green-600' size={30} />
         </div>
 
         <div
-          className='inline-flex items-center justify-center p-2 m-2 w-16 h-16 bg-red-100 rounded-full cursor-pointer'
+          className='inline-flex items-center justify-center p-2 m-2 w-16 h-16 rounded-full cursor-pointer hover:bg-red-100'
           onClick={() => {
             handleReset();
           }}

@@ -1,7 +1,7 @@
 import React from 'react';
 import CatSprite from './CatSprite';
 export default function PreviewArea({ position, handleClick, actions }) {
-  const executeSequentially = async (actions) => {
+  const sequentialExecute = async (actions) => {
     for (const action of actions) {
       handleClick(action?.id);
       await new Promise((resolve) => setTimeout(resolve, 100));
@@ -31,7 +31,7 @@ export default function PreviewArea({ position, handleClick, actions }) {
         )}
         <div
           onClick={() => {
-            executeSequentially(actions);
+            sequentialExecute(actions);
           }}
         >
           <CatSprite height={position.height} width={position.width} />
