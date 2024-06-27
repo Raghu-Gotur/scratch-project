@@ -7,6 +7,7 @@ export default function MidArea({
   handleDragOver,
   updateActions,
   handleClick,
+  handleReset,
 }) {
   const getActions = (element, index) => {
     let messageParts = element?.message?.split(' ');
@@ -54,15 +55,24 @@ export default function MidArea({
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <div>
-        <button
-          className='text-white bg-green-500 rounded-lg w-44 p-2 m-2 center'
+      <div className='flex justify-around'>
+        <div
+          className='inline-flex items-center justify-center p-2 m-2 w-16 h-16 bg-green-100 rounded-full cursor-pointer'
           onClick={() => {
             executeSequentially(actions);
           }}
         >
-          Play
-        </button>
+          <Icon name='flag' className='text-green-600' size={30} />
+        </div>
+
+        <div
+          className='inline-flex items-center justify-center p-2 m-2 w-16 h-16 bg-red-100 rounded-full cursor-pointer'
+          onClick={() => {
+            handleReset();
+          }}
+        >
+          <Icon name='undo' className='text-red-600' size={30} />
+        </div>
       </div>
       {actions?.map((action, index) => {
         return <div key={index}>{getActions(action, index)}</div>;

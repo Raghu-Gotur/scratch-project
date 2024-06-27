@@ -1,6 +1,12 @@
 import React from 'react';
 import CatSprite from './CatSprite';
-export default function PreviewArea({ position }) {
+export default function PreviewArea({ position, handleClick, actions }) {
+  const executeSequentially = async (actions) => {
+    for (const action of actions) {
+      handleClick(action?.id);
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+  };
   return (
     <div
       draggable
@@ -18,7 +24,18 @@ export default function PreviewArea({ position }) {
           transition: 'transform 1s ease',
         }}
       >
-        <CatSprite />
+        {position?.greeting && (
+          <p className='relative mx-14 text-white bg-blue-300 rounded-lg px-1 m-1'>
+            Hello
+          </p>
+        )}
+        <div
+          onClick={() => {
+            executeSequentially(actions);
+          }}
+        >
+          <CatSprite height={position.height} width={position.width} />
+        </div>
       </div>
     </div>
   );

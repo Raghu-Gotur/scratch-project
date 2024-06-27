@@ -22,13 +22,13 @@ export default function Sidebar({ handleDrag, handleClick }) {
 
   let motions = [
     {
-      message: 'Move 50 steps horizontally',
+      message: 'Move horizontally',
       id: 'move50X',
       parentClassname:
         'flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer',
     },
     {
-      message: 'Move 50 steps vertically',
+      message: 'Move vertically',
       id: 'move50Y',
       parentClassname:
         'flex flex-row flex-wrap bg-blue-500 text-white px-2 py-1 my-2 text-sm cursor-pointer',
